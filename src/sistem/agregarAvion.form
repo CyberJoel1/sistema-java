@@ -184,6 +184,7 @@
         <Property name="text" type="java.lang.String" value="A&#xd1;ADIR"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="a&#xf1;adirAvionButtonMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="a&#xf1;adirAvionButtonActionPerformed"/>
       </Events>
       <Constraints>

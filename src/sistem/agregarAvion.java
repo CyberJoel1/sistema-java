@@ -125,6 +125,11 @@ public class agregarAvion extends javax.swing.JInternalFrame {
         añadirAvionButton.setFont(new java.awt.Font("Gill Sans MT", 1, 14)); // NOI18N
         añadirAvionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Usuario.png"))); // NOI18N
         añadirAvionButton.setText("AÑADIR");
+        añadirAvionButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                añadirAvionButtonMouseClicked(evt);
+            }
+        });
         añadirAvionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 añadirAvionButtonActionPerformed(evt);
@@ -204,6 +209,10 @@ public class agregarAvion extends javax.swing.JInternalFrame {
     private void tipoAviontxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoAviontxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoAviontxtActionPerformed
+
+    private void añadirAvionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirAvionButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_añadirAvionButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -71,8 +71,6 @@ public class inicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         frm_InicioSesion f = new frm_InicioSesion();
-        //Principal menu = new Principal();
-        //menu.setVisible(true);
         f.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
