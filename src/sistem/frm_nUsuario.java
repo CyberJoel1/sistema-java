@@ -430,6 +430,10 @@ public class frm_nUsuario extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(frm_nUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
+            JOptionPane.showMessageDialog(null,"Usuario Registrado al sistema Correctamente");
+            frm_InicioSesion is = new frm_InicioSesion();
+            is.setVisible(true);
+            this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null,"Error de datos ingresados ");
         }
