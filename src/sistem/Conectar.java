@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistem;
 
 
@@ -12,28 +7,34 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-/**
- *
- * @author Joel Velasco
- */
+
+
 public class Conectar {
-   /* Connection conectar;
+    /*
+    Connection conectar;
     Statement sentencia;
     ResultSet rs = null;
+    
   public void  Conectar(){
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conectar=DriverManager.getConnection("jdbc:sqlserver://DESKTOP-C3IRJD9:1433;databaseName=agencia_vuelos;IntegratedSecurity=true");
-            JOptionPane.showMessageDialog(null, "Conextado");
+            String connURL = ("jdbc:sqlserver://localhost:1433;databaseName=agencia_vuelos;IntegratedSecurity=true;"
+                    + "user=admin5;"
+                    + "password=12345678");
+            Connection con = DriverManager.getConnection(connURL);
+            JOptionPane.showMessageDialog(null, "Conectado");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error");
         }
-    }*/
-        public static Connection getConexion(){
+    }
+    
+*/
+    public static Connection getConexion(){
         String url="jdbc:sqlserver://localhost:1433;"
                 + "database=agencia_vuelos;"
-                + "user=sa;"
-                + "password=18062014;"
+                + "user=admin5;"
+                //+ "password=18062014;"
+                + "password=12345678;"
                 + "loginTimeout=30;";
         try{
             Connection conn = DriverManager.getConnection(url);
@@ -43,4 +44,5 @@ public class Conectar {
             return null;
         }
     }
+   
 }

@@ -64,14 +64,16 @@ public class inicio extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 110, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vuelos.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -40, 770, 500));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -40, 810, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Principal menu = new Principal();
-        menu.setVisible(true);
+        frm_InicioSesion f = new frm_InicioSesion();
+        //Principal menu = new Principal();
+        //menu.setVisible(true);
+        f.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

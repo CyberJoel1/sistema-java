@@ -42,9 +42,8 @@ public class agregarAvion extends javax.swing.JInternalFrame {
         }catch(SQLException e){
             System.out.println(e.toString());
         }
-        
-                    estadoAvionCbox.addItem("DISPONIBLE");
-                    estadoAvionCbox.addItem("NO DISPONIBLE");
+            estadoAvionCbox.addItem("DISPONIBLE");
+            estadoAvionCbox.addItem("NO DISPONIBLE");
     }
 
     @SuppressWarnings("unchecked")
