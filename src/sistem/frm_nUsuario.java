@@ -1,9 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sistem;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,11 +37,11 @@ public class frm_nUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpContenedor = new javax.swing.JTabbedPane();
         jp_personales = new javax.swing.JPanel();
-        txt_nombre1 = new javax.swing.JTextField();
-        txt_apellido1 = new javax.swing.JTextField();
-        txt_cedula1 = new javax.swing.JTextField();
-        txt_telefono1 = new javax.swing.JTextField();
-        txt_date1 = new com.toedter.calendar.JDateChooser();
+        txt_nombre = new javax.swing.JTextField();
+        txt_apellido = new javax.swing.JTextField();
+        txt_cedula = new javax.swing.JTextField();
+        txt_telefono = new javax.swing.JTextField();
+        txt_date = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -70,15 +76,15 @@ public class frm_nUsuario extends javax.swing.JFrame {
 
         jpContenedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        txt_nombre1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        txt_apellido1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        txt_cedula1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_cedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        txt_telefono1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        txt_date1.setDateFormatString("dd/MM/yyyy");
+        txt_date.setDateFormatString("dd/MM/yyyy");
 
         jLabel7.setText("Nombre");
 
@@ -106,7 +112,7 @@ public class frm_nUsuario extends javax.swing.JFrame {
                 .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jp_personalesLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txt_apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jp_personalesLayout.createSequentialGroup()
                         .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
@@ -114,10 +120,10 @@ public class frm_nUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_cedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txt_date1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                                .addComponent(txt_telefono1)))))
+                                .addComponent(txt_date, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txt_telefono)))))
                 .addGap(35, 35, 35))
             .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jp_personalesLayout.createSequentialGroup()
@@ -126,7 +132,7 @@ public class frm_nUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addComponent(jLabel8))
                     .addGap(96, 96, 96)
-                    .addComponent(txt_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(35, Short.MAX_VALUE)))
         );
         jp_personalesLayout.setVerticalGroup(
@@ -135,26 +141,26 @@ public class frm_nUsuario extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(txt_apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_cedula1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_cedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_date1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_date, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txt_telefono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jp_personalesLayout.createSequentialGroup()
                     .addGap(58, 58, 58)
                     .addGroup(jp_personalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
-                        .addComponent(txt_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addComponent(jLabel8)
                     .addContainerGap(128, Short.MAX_VALUE)))
@@ -368,6 +374,66 @@ public class frm_nUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrarMouseClicked
+        String user = txt_usuario.getText();
+        String pass1 = txt_pass1.getText();
+        String pass2 = txt_pass1.getText();
+        String numCuenta = txt_numCuenta.getText();
+        String titular = txt_nombreTitular.getText();
+        String numTarjeta = txt_numTarjeta.getText();
+        String cvv = txt_codigoCVV.getText();
+        String nombre = txt_nombre.getText();
+        String apellido = txt_apellido.getText();
+        String cedula = txt_cedula.getText();
+        Date fNacimiento = txt_date.getDate();
+        String telefono = txt_telefono.getText();
+        if(pass1==pass2){
+            try {
+            Connection con = Conectar.getConexion();
+            Statement sql = Conectar.getConexion().createStatement();
+            String consulta = "INSERT INTO dbo.USUARIOWEB(NOMBREUSER,PASSUSER,ESTADO)VALUES(?,?,?)";
+            PreparedStatement ps = con.prepareStatement(consulta); ps.setString(1, user); ps.setString(2, pass1); ps.setInt(3, 1);
+            ps.executeUpdate();
+            
+            String consulta_id_userWeb = "SELECT * FROM USUARIOWEB WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass1+"' AND ESTADO = 1";
+            ResultSet rs1 = sql.executeQuery(consulta);
+            int id_userWeb = rs1.getInt("IDUSER");  
+            
+            String consulta2 = "INSERT INTO [dbo].[CUENTA_BANCO] ([NUMEROCUENTA],[TITULAR])VALUES (?,?)";
+            PreparedStatement ps2 = con.prepareStatement(consulta2); ps2.setString(1, numCuenta); ps2.setString(2, titular); 
+            ps2.executeUpdate();
+            
+            String consulta_id_cuenta = "SELECT * FROM dbo.CUENTA_BANCO WHERE NUMEROCUENTA='"+numCuenta+"' AND TITULAR ='"+titular+"';";
+            ResultSet rs2 = sql.executeQuery(consulta);
+            int id_cuenta = rs2.getInt("IDCUENTA");  
+            
+            String consulta3 = "INSERT INTO dbo.TARJETA(IDCUENTA,NUMEROTARJETA, CVVTARJETA)VALUES(?,?,?)";
+            PreparedStatement ps3 = con.prepareStatement(consulta3); ps3.setInt(1, id_cuenta); ps3.setString(2, numTarjeta); ps3.setString(3, cvv);
+            ps3.executeUpdate();
+            
+            String consulta4 = "INSERT INTO dbo.CLIENTE(IDCUENTA,IDUSER,NOMBRE,APELLIDO,CEDULA,FECHANACIMIENTO,TELEFONO)\n" +
+                                                "VALUES(?,?,?,?,?,?,?)";
+            PreparedStatement ps4 = con.prepareStatement(consulta4); 
+            ps4.setInt(1, id_cuenta); 
+            ps4.setInt(2, id_userWeb); 
+            ps4.setString(3,nombre);
+            ps4.setString(4,apellido);
+            ps4.setString(5,cedula);
+            ps4.setDate(6,(java.sql.Date)fNacimiento);
+            ps4.setString(7, telefono);
+            ps3.executeUpdate();
+            
+            con.close();
+            ps.close();
+            ps2.close();
+            ps3.close();
+            ps4.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(frm_nUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Error de datos ingresados ");
+        }
+        
            
     }//GEN-LAST:event_btn_registrarMouseClicked
 
@@ -443,17 +509,17 @@ public class frm_nUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jp_banco;
     private javax.swing.JPanel jp_online;
     private javax.swing.JPanel jp_personales;
-    private javax.swing.JTextField txt_apellido1;
-    private javax.swing.JTextField txt_cedula1;
+    private javax.swing.JTextField txt_apellido;
+    private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_codigoCVV;
-    private com.toedter.calendar.JDateChooser txt_date1;
-    private javax.swing.JTextField txt_nombre1;
+    private com.toedter.calendar.JDateChooser txt_date;
+    private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_nombreTitular;
     private javax.swing.JTextField txt_numCuenta;
     private javax.swing.JTextField txt_numTarjeta;
     private javax.swing.JPasswordField txt_pass1;
     private javax.swing.JPasswordField txt_pass2;
-    private javax.swing.JTextField txt_telefono1;
+    private javax.swing.JTextField txt_telefono;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }

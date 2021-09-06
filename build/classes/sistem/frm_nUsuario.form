@@ -103,7 +103,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="txt_apellido1" min="-2" pref="235" max="-2" attributes="0"/>
+                              <Component id="txt_apellido" min="-2" pref="235" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -113,10 +113,10 @@
                               </Group>
                               <EmptySpace pref="49" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txt_cedula1" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="txt_cedula" min="-2" pref="235" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txt_date1" alignment="0" pref="235" max="32767" attributes="0"/>
-                                      <Component id="txt_telefono1" max="32767" attributes="0"/>
+                                      <Component id="txt_date" alignment="0" pref="235" max="32767" attributes="0"/>
+                                      <Component id="txt_telefono" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -131,7 +131,7 @@
                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="txt_nombre1" min="-2" pref="235" max="-2" attributes="0"/>
+                          <Component id="txt_nombre" min="-2" pref="235" max="-2" attributes="0"/>
                           <EmptySpace pref="35" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -143,21 +143,21 @@
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="56" max="32767" attributes="0"/>
-                      <Component id="txt_apellido1" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_apellido" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_cedula1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_cedula" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_date1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_date" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_telefono1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_telefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -166,7 +166,7 @@
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_nombre1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -177,27 +177,27 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_nombre1">
+            <Component class="javax.swing.JTextField" name="txt_nombre">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_apellido1">
+            <Component class="javax.swing.JTextField" name="txt_apellido">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_cedula1">
+            <Component class="javax.swing.JTextField" name="txt_cedula">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_telefono1">
+            <Component class="javax.swing.JTextField" name="txt_telefono">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="txt_date1">
+            <Component class="com.toedter.calendar.JDateChooser" name="txt_date">
               <Properties>
                 <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
               </Properties>
