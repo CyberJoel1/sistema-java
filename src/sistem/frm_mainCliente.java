@@ -6,6 +6,7 @@
 package sistem;
 
 import cliente.CuentaBanco;
+import cliente.Vuelos;
 import cliente.datosGenerales;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -51,8 +52,14 @@ public class frm_mainCliente extends javax.swing.JFrame {
             .addGap(0, 492, Short.MAX_VALUE)
         );
 
-        datosGenerales.setText("DATOS GENERALES");
+        jMenuBar2.setBorder(new javax.swing.border.MatteBorder(null));
+        jMenuBar2.setMargin(new java.awt.Insets(5, 0, 5, 0));
+
+        datosGenerales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        datosGenerales.setText("Datos Generales");
+        datosGenerales.setBorderPainted(true);
         datosGenerales.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        datosGenerales.setMargin(new java.awt.Insets(0, 5, 0, 5));
         datosGenerales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 datosGeneralesMouseClicked(evt);
@@ -60,7 +67,9 @@ public class frm_mainCliente extends javax.swing.JFrame {
         });
         jMenuBar2.add(datosGenerales);
 
-        cuentaBanco.setText("CUENTA BANCO ");
+        cuentaBanco.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cuentaBanco.setText("Cuenta Bancaria");
+        cuentaBanco.setBorderPainted(true);
         cuentaBanco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cuentaBanco.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -69,11 +78,20 @@ public class frm_mainCliente extends javax.swing.JFrame {
         });
         jMenuBar2.add(cuentaBanco);
 
-        vuelos.setText("VUELOS");
+        vuelos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        vuelos.setText("Vuelos Registrado");
+        vuelos.setBorderPainted(true);
         vuelos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        vuelos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vuelosMouseClicked(evt);
+            }
+        });
         jMenuBar2.add(vuelos);
 
-        jMenu1.setText("CERRAR SESION");
+        jMenu1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenu1.setText("Cerrar Sesion");
+        jMenu1.setBorderPainted(true);
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jMenu1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -129,6 +147,12 @@ public class frm_mainCliente extends javax.swing.JFrame {
             Logger.getLogger(frm_mainCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_datosGeneralesMouseClicked
+
+    private void vuelosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vuelosMouseClicked
+        Vuelos v = new Vuelos();
+        Contenedor.add(v);
+        v.show();
+    }//GEN-LAST:event_vuelosMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -29,8 +29,8 @@ public class frm_InicioSesion extends javax.swing.JFrame {
     }
     
     public void cargarTXT(){
-        lbl_id.setText(""+this.id_sesion);
-        sesion_id.setText(""+this.id_sesion);
+        this.lbl_id.setText(""+this.id_sesion);
+        this.sesion_id.setText(""+this.id_sesion);
     }
     
     @SuppressWarnings("unchecked")
@@ -54,13 +54,16 @@ public class frm_InicioSesion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio de Sesion");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INICIO DE SESION ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 11, 246, 75));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Usuario");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 124, -1, 24));
 
         txt_user.setFont(new java.awt.Font("Georgia", 2, 18)); // NOI18N
         txt_user.setForeground(new java.awt.Color(153, 153, 153));
@@ -68,9 +71,11 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         txt_user.setToolTipText("Ingrese Usuario");
         txt_user.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 2, 0));
         txt_user.setName("txt_user"); // NOI18N
+        getContentPane().add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 104, 248, 39));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Contraseña");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 194, -1, -1));
 
         btn_iniciar.setBackground(new java.awt.Color(0, 204, 0));
         btn_iniciar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -88,8 +93,13 @@ public class frm_InicioSesion extends javax.swing.JFrame {
                 btn_iniciarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 274, 440, 39));
+        btn_iniciar.getAccessibleContext().setAccessibleName("btn_sesion");
+        btn_iniciar.getAccessibleContext().setAccessibleDescription("");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/avion minimalis.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 401));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 144, 47));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -106,6 +116,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 344, 440, 40));
 
         txt_pass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -114,80 +125,16 @@ public class frm_InicioSesion extends javax.swing.JFrame {
                 txt_passActionPerformed(evt);
             }
         });
+        getContentPane().add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 183, 248, 40));
+        getContentPane().add(sesion_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 28, 70, -1));
 
         lbl_id.setText("0");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sesion_id, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_id, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel6)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_pass)
-                            .addComponent(txt_user, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(sesion_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl_id)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(btn_iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-
-        btn_iniciar.getAccessibleContext().setAccessibleName("btn_sesion");
-        btn_iniciar.getAccessibleContext().setAccessibleDescription("");
+        getContentPane().add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 66, 31, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
-        
         if((login(txt_user.getText(),txt_pass.getText()))==1){
             this.cargarTXT();
             if( (this.userADM.equals("admin")) && (this.passADM.equals("admin")) ){
@@ -222,6 +169,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
 
     public int login(String user,String pass){
         Integer resultado = 0;
+        String userP = "";
         frm_InicioSesion frm = new frm_InicioSesion();
         try{
             Statement sql = Conectar.getConexion().createStatement();
@@ -231,6 +179,9 @@ public class frm_InicioSesion extends javax.swing.JFrame {
                 resultado = 1;
                 this.id_sesion=rs.getInt(1);
                 System.out.println(""+this.id_sesion);
+                this.sesion_id.setText(" "+this.id_sesion);
+                
+                userP = rs.getString(2);
                 this.userADM=rs.getString(2);
                 System.out.println(""+rs.getString(2));
                 this.passADM=rs.getString(3);
@@ -242,7 +193,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         }catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(null,"Error al conectar ",e.getMessage(),JOptionPane.ERROR_MESSAGE);
         }
-        
+        this.lbl_id.setText(userP);
         return resultado;
     }
     

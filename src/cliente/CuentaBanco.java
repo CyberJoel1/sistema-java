@@ -31,8 +31,14 @@ public final class CuentaBanco extends javax.swing.JInternalFrame {
             ResultSet rs = sql.executeQuery("SELECT cb.IDCUENTA,cb.NUMEROCUENTA,cb.TITULAR FROM CLIENTE c, dbo.CUENTA_BANCO cb WHERE c.IDCLIENTE="+id+" AND c.IDCUENTA=cb.IDCUENTA");
             if(rs.next()){
                 this.id_cuenta = rs.getInt(1);
-                this.tf_numCuenta.setText(rs.getString(2));
-                this.tf_nomTitular.setText(rs.getString(3));
+                
+                String numCuenta = rs.getString(2);
+                String txtNumeroCuenta=numCuenta.replace(" ", "");
+                this.tf_numCuenta.setText(txtNumeroCuenta);
+                
+                String nomTitular = rs.getString(3);
+                String txtNomTitular = nomTitular.replace(" ", "");
+                this.tf_nomTitular.setText(txtNomTitular);
             }
         }catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(null,"Error al conectar ",e.getMessage(),JOptionPane.ERROR_MESSAGE);
@@ -67,19 +73,6 @@ public final class CuentaBanco extends javax.swing.JInternalFrame {
             ));
         }catch(SQLException e){
             System.out.println(e.toString());
-        }
-        
-        
-        
-        
-        try{
-            Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rs = sql.executeQuery("SELECT * FROM dbo.TARJETA WHERE IDCUENTA="+id_cuenta+"");
-            if(rs.next()){
-                
-            }
-        }catch(HeadlessException | SQLException e){
-            JOptionPane.showMessageDialog(null,"Error al conectar ",e.getMessage(),JOptionPane.ERROR_MESSAGE);
         }
     }
     
