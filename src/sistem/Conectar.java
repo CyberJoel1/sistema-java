@@ -34,13 +34,12 @@ public class Conectar {
                 + "database=agencia_vuelos;"
                 + "user=admin5;"
                 //+ "password=18062014;"
-                + "password=12345678;"
-                + "loginTimeout=30;";
+                + "password=12345678;";
         try{
             Connection conn = DriverManager.getConnection(url);
             return conn;
         }catch(SQLException ex){
-            System.out.print(ex.toString());
+            System.out.print(ex.getMessage());
             return null;
         }
     }

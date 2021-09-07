@@ -104,8 +104,6 @@ public class frm_InicioSesion extends javax.swing.JFrame {
             }
         });
 
-        txt_pass.setText("jPasswordField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,11 +187,10 @@ public class frm_InicioSesion extends javax.swing.JFrame {
     public int login(String user,String pass){
         Integer resultado = 0;
         try{
-           
             Statement sql = Conectar.getConexion().createStatement();
-            String consulta = "SELECT * FROM USUARIOWEB WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass+"' AND ESTADO = 1";
-            ResultSet rs = sql.executeQuery(consulta);
-            id_sesion = rs.getInt("IDUSER");            
+            ResultSet rs = sql.executeQuery("SELECT * FROM USUARIOWEB WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass+"' AND ESTADO = 1");
+            System.out.println(""+rs.toString());
+                   
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Bienvenido");
                 resultado = 1;
@@ -202,7 +199,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
                 resultado = 0;
             }
         }catch(HeadlessException | SQLException e){
-            JOptionPane.showMessageDialog(null,"Error al conectar "+e.getMessage(),e.getMessage(),JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Error al conectar ",e.getMessage(),JOptionPane.ERROR_MESSAGE);
         }
         
         return resultado;

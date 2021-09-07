@@ -168,7 +168,6 @@ public class agregarAvion extends javax.swing.JInternalFrame {
         int capacidad=Integer.parseInt(capacidadAvion);
         try {
             Connection con = Conectar.getConexion();
-
             String consulta = "INSERT INTO AVION (FABRICANTEAVION"
                     + ",IDAEROLINEA, TIPOAVION, CAPACIDADAVION, ESTADOAVION) "
                     + "VALUES (?,?,?,?,?)";
