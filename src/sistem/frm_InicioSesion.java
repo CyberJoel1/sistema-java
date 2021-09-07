@@ -16,8 +16,13 @@ import javax.swing.JOptionPane;
  * @author iAmPocho
  */
 public class frm_InicioSesion extends javax.swing.JFrame {
+    
 
-    public int id_sesion=0;
+    public int id_sesion;
+    String userADM;
+    String passADM;
+    
+    
     
     /**
      * Creates new form frm_InicioSesion
@@ -46,6 +51,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jButton1 = new javax.swing.JButton();
         txt_pass = new javax.swing.JPasswordField();
+        txt_id_user = new javax.swing.JTextField();
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vuelos.jpg"))); // NOI18N
 
@@ -104,6 +110,14 @@ public class frm_InicioSesion extends javax.swing.JFrame {
             }
         });
 
+        txt_pass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_passActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,12 +127,14 @@ public class frm_InicioSesion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(81, 81, 81)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_id_user, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -136,8 +152,13 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(txt_id_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,9 +185,15 @@ public class frm_InicioSesion extends javax.swing.JFrame {
 
     private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
         if((login(txt_user.getText(),txt_pass.getText()))==1){
-            Principal p = new Principal();
-            p.setVisible(true);
-            this.setVisible(false);
+            if( (this.userADM.equals("admin")) && (this.passADM.equals("admin")) ){
+                Principal p = new Principal();
+                p.setVisible(true);
+                this.setVisible(false);
+            }else{
+                frm_mainCliente fmc = new frm_mainCliente();
+                fmc.setVisible(true);
+                this.setVisible(false);
+            }
         }
     }//GEN-LAST:event_btn_iniciarActionPerformed
 
@@ -184,15 +211,25 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void txt_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_passActionPerformed
+
     public int login(String user,String pass){
         Integer resultado = 0;
+        
         try{
             Statement sql = Conectar.getConexion().createStatement();
             ResultSet rs = sql.executeQuery("SELECT * FROM USUARIOWEB WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass+"' AND ESTADO = 1");
-            System.out.println(""+rs.toString());
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Bienvenido");
                 resultado = 1;
+                this.txt_id_user.setText(""+rs.getInt(1));
+                System.out.println(""+rs.getInt(1));
+                this.userADM=rs.getString(2);
+                System.out.println(""+rs.getString(2));
+                this.passADM=rs.getString(3);
+                System.out.println(""+rs.getString(3));
             }else{
                 JOptionPane.showMessageDialog(null, "Datos incorrectos o \n Usuario Inhabilitado ");
                 resultado = 0;
@@ -239,6 +276,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    public javax.swing.JTextField txt_id_user;
     private javax.swing.JPasswordField txt_pass;
     private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
