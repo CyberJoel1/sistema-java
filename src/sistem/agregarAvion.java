@@ -14,10 +14,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 
-/**
- *
- * @author Katherine
- */
+
 public class agregarAvion extends javax.swing.JInternalFrame {
 
     public agregarAvion() {
