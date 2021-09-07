@@ -29,7 +29,6 @@ public class frm_nUsuario extends javax.swing.JFrame {
         txt_apellido = new javax.swing.JTextField();
         txt_cedula = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
-        txt_date = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -77,9 +76,6 @@ public class frm_nUsuario extends javax.swing.JFrame {
 
         txt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jp_personales.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 231, 235, -1));
-
-        txt_date.setDateFormatString("dd/MM/yyyy");
-        jp_personales.add(txt_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 193, 235, -1));
 
         jLabel7.setText("Nombre");
         jp_personales.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 61, -1, -1));
@@ -417,7 +413,6 @@ public class frm_nUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_codigoCVV;
-    private com.toedter.calendar.JDateChooser txt_date;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_nombreTitular;
     private javax.swing.JTextField txt_numCuenta;
