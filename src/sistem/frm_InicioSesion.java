@@ -1,37 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sistem;
 
+import cliente.CuentaBanco;
 import java.awt.HeadlessException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author iAmPocho
- */
+
 public class frm_InicioSesion extends javax.swing.JFrame {
     
-
-    int id_sesion;
+    public int id_sesion;
     String userADM;
     String passADM;
-    
     
     public frm_InicioSesion() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
     
-    public void cargarTXT(){
-        this.lbl_id.setText(""+this.id_sesion);
-        this.sesion_id.setText(""+this.id_sesion);
-    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -47,8 +36,6 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jButton1 = new javax.swing.JButton();
         txt_pass = new javax.swing.JPasswordField();
-        sesion_id = new javax.swing.JTextField();
-        lbl_id = new javax.swing.JLabel();
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vuelos.jpg"))); // NOI18N
 
@@ -98,7 +85,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         btn_iniciar.getAccessibleContext().setAccessibleDescription("");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/avion minimalis.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 401));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -19, -1, 480));
         getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 144, 47));
@@ -126,23 +113,28 @@ public class frm_InicioSesion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 183, 248, 40));
-        getContentPane().add(sesion_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 28, 70, -1));
-
-        lbl_id.setText("0");
-        getContentPane().add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 66, 31, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
         if((login(txt_user.getText(),txt_pass.getText()))==1){
-            this.cargarTXT();
-            if( (this.userADM.equals("admin")) && (this.passADM.equals("admin")) ){
+            String user = this.userADM;
+            String txtuser=user.replace(" ", "");
+            System.out.println("USER: "+txtuser);
+            String pass = this.passADM;
+            String txtpass = user.replace(" ", "");
+            System.out.println("PASS: "+txtpass);
+            if( "admin".equals(txtuser) && "admin".equals(txtpass) ){
                 Principal p = new Principal();
                 p.setVisible(true);
-                this.setVisible(false);
+                this.setVisible(false);               
             }else{
                 frm_mainCliente fmc = new frm_mainCliente();
+                //CuentaBanco cb = new CuentaBanco();
+                //cb.txt_id_user.setText(""+this.id_sesion);
+                fmc.txt_id_sesion.setText(""+this.id_sesion);
+                fmc.txt_test_id.setText(""+this.id_sesion);
                 fmc.setVisible(true);
                 this.setVisible(false);
             }
@@ -169,7 +161,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
 
     public int login(String user,String pass){
         Integer resultado = 0;
-        String userP = "";
+        int id=0;
         frm_InicioSesion frm = new frm_InicioSesion();
         try{
             Statement sql = Conectar.getConexion().createStatement();
@@ -179,9 +171,6 @@ public class frm_InicioSesion extends javax.swing.JFrame {
                 resultado = 1;
                 this.id_sesion=rs.getInt(1);
                 System.out.println(""+this.id_sesion);
-                this.sesion_id.setText(" "+this.id_sesion);
-                
-                userP = rs.getString(2);
                 this.userADM=rs.getString(2);
                 System.out.println(""+rs.getString(2));
                 this.passADM=rs.getString(3);
@@ -193,7 +182,6 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         }catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(null,"Error al conectar ",e.getMessage(),JOptionPane.ERROR_MESSAGE);
         }
-        this.lbl_id.setText(userP);
         return resultado;
     }
     
@@ -232,8 +220,6 @@ public class frm_InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    public javax.swing.JLabel lbl_id;
-    public javax.swing.JTextField sesion_id;
     private javax.swing.JPasswordField txt_pass;
     private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables

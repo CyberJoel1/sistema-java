@@ -10,14 +10,19 @@ import sistem.Conectar;
 
 public class Vuelos extends javax.swing.JInternalFrame {
 
-    public Vuelos() {
+    public Vuelos(int id) {
         initComponents();
-        this.cargarVuelos(1);
+        this.cargarVuelos(id);
     }
 
-    public void cargarVuelos(int id_cliente){
+    public void cargarVuelos(int id_user){
         try{
+            int id_cliente=0;
             Statement sql = Conectar.getConexion().createStatement();
+            ResultSet rsCliente = sql.executeQuery("SELECT * FROM CLIENTE WHERE IDUSER="+id_user+"");
+            if(rsCliente.next()){
+                id_cliente=rsCliente.getInt(1);
+            }
             ResultSet resultado = sql.executeQuery("SELECT b.CLASE,tp.DESCRIPCIONTIPO,cr.FECHA,cr.TIPOCOMPRA,cr.VALIDEZ,cr.ABONO \n" +
                                         "FROM dbo.COMPRA_RESERVA cr,dbo.TIPO_PAGO tp, dbo.BOLETO b \n" +
                                         "WHERE IDCLIENTE="+id_cliente+" AND cr.IDBOLETO=b.IDBOLETO AND cr.IDPAGO=tp.IDTIPOPAGO ");

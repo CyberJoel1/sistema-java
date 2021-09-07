@@ -29,17 +29,17 @@ public class Conectar {
     }
     
 */
-    public static Connection getConexion(){
-        String url="jdbc:sqlserver://localhost:1433;"
+        public static Connection getConexion(){
+        String url="jdbc:sqlserver://26.60.5.36:1433;"
                 + "database=agencia_vuelos;"
-                + "user=admin5;"
-                //+ "password=18062014;"
-                + "password=12345678;";
+                + "user=sa;"
+                + "password=18062014;"
+                + "loginTimeout=30;";
         try{
             Connection conn = DriverManager.getConnection(url);
             return conn;
         }catch(SQLException ex){
-            System.out.print(ex.getMessage());
+            System.out.print(ex.toString());
             return null;
         }
     }

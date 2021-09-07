@@ -10,15 +10,22 @@ import sistem.Conectar;
 
 public class datosGenerales extends javax.swing.JInternalFrame {
     
-    public datosGenerales() throws SQLException {
+    public int id_cuenta;
+    
+    public datosGenerales(int id) throws SQLException {
         initComponents();
-        this.cargarDatos(52);
-        
+        this.cargarDatos(id);
+        this.id_cuenta=id;
     }
 
-    public void cargarDatos(int id_cliente) throws SQLException{
+    public void cargarDatos(int id_user) throws SQLException{
         try{
+            int id_cliente=0;
             Statement sql = Conectar.getConexion().createStatement();
+            ResultSet rsCliente = sql.executeQuery("SELECT * FROM CLIENTE WHERE IDUSER="+id_user+"");
+            if(rsCliente.next()){
+                id_cliente=rsCliente.getInt(1);
+            }
             ResultSet rs = sql.executeQuery("SELECT us.NOMBREUSER,us.PASSUSER,c.NOMBRE,c.APELLIDO,c.CEDULA,c.FECHANACIMIENTO,c.TELEFONO \n" +
                                             "  FROM dbo.USUARIOWEB us,dbo.CLIENTE c \n" +
                                             "  WHERE us.IDUSER=c.IDUSER AND c.IDCLIENTE="+id_cliente+"");
