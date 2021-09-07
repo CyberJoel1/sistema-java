@@ -4,6 +4,17 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar2">
       <SubComponents>
+        <Menu class="javax.swing.JMenu" name="datosGenerales">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="DATOS GENERALES"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="datosGeneralesMouseClicked"/>
+          </Events>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="cuentaBanco">
           <Properties>
             <Property name="text" type="java.lang.String" value="CUENTA BANCO "/>
@@ -18,14 +29,6 @@
         <Menu class="javax.swing.JMenu" name="vuelos">
           <Properties>
             <Property name="text" type="java.lang.String" value="VUELOS"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
-            </Property>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="cuentaWeb">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CUENTA WEB"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
