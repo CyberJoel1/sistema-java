@@ -190,7 +190,6 @@ public class frm_InicioSesion extends javax.swing.JFrame {
             Statement sql = Conectar.getConexion().createStatement();
             ResultSet rs = sql.executeQuery("SELECT * FROM USUARIOWEB WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass+"' AND ESTADO = 1");
             System.out.println(""+rs.toString());
-                   
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Bienvenido");
                 resultado = 1;
