@@ -14,24 +14,27 @@ import sistem.frm_InicioSesion;
 public final class CuentaBanco extends javax.swing.JInternalFrame {
     frm_InicioSesion fis = new frm_InicioSesion();
     
-    int id_cuenta;
+    public int id_cuenta;
     
-    public CuentaBanco() throws SQLException {
+    public CuentaBanco(int id) throws SQLException {
         initComponents();
-//        String id = fis.sesion_id.getText();
-//        id.trim();
-//        int id_cliente= Integer.parseInt(id);
-        this.cargarDatos(52);
+        this.id_cuenta=id;
+        this.cargarDatos(id);
         this.cargarTarjetas(id_cuenta);
     }
 
-    public void cargarDatos(int id) throws SQLException{
+    public void cargarDatos(int id_user) throws SQLException{
         try{
+            int id_cliente=0;
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rs = sql.executeQuery("SELECT cb.IDCUENTA,cb.NUMEROCUENTA,cb.TITULAR FROM CLIENTE c, dbo.CUENTA_BANCO cb WHERE c.IDCLIENTE="+id+" AND c.IDCUENTA=cb.IDCUENTA");
+            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
+            if(rsCliente.next()){
+                id_cliente=rsCliente.getInt(1);
+            }
+            
+            ResultSet rs = sql.executeQuery("SELECT cb.IDCUENTA,cb.NUMEROCUENTA,cb.TITULAR FROM [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE c, [26.37.14.200].[agencia_vuelos].[dbo].CUENTA_BANCO cb WHERE c.IDCLIENTE="+id_cliente+" AND c.IDCUENTA=cb.IDCUENTA");
             if(rs.next()){
                 this.id_cuenta = rs.getInt(1);
-                
                 String numCuenta = rs.getString(2);
                 String txtNumeroCuenta=numCuenta.replace(" ", "");
                 this.tf_numCuenta.setText(txtNumeroCuenta);
@@ -48,7 +51,7 @@ public final class CuentaBanco extends javax.swing.JInternalFrame {
     public void cargarTarjetas(int id_cuenta){
         try{
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet resultado = sql.executeQuery("SELECT * FROM dbo.TARJETA WHERE IDCUENTA="+id_cuenta+"");
+            ResultSet resultado = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].TARJETA WHERE IDCUENTA="+id_cuenta+"");
             int columna=4;
             List<String> nom= new ArrayList<>();
             while(resultado.next()){
@@ -91,6 +94,7 @@ public final class CuentaBanco extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_tarjetas = new javax.swing.JTable();
+        txt_id_user = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,6 +152,10 @@ public final class CuentaBanco extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 400, 110));
 
+        txt_id_user.setEditable(false);
+        txt_id_user.setText("0");
+        jPanel1.add(txt_id_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 50, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 450, 370));
         jPanel1.getAccessibleContext().setAccessibleName("Cuenta de Banco");
 
@@ -167,5 +175,6 @@ public final class CuentaBanco extends javax.swing.JInternalFrame {
     private javax.swing.JTable table_tarjetas;
     private javax.swing.JTextField tf_nomTitular;
     private javax.swing.JTextField tf_numCuenta;
+    public javax.swing.JTextField txt_id_user;
     // End of variables declaration//GEN-END:variables
 }

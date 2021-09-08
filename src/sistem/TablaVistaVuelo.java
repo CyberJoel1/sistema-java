@@ -18,10 +18,10 @@ public class TablaVistaVuelo extends javax.swing.JFrame {
                 try{
             Statement sql = Conectar.getConexion().createStatement();
             String consulta = "SELECT VUELO.IDVUELO, VUELO.FECHAPARTIDAVUELO, VUELO.DESTINOVUELO, \n" +
-"VUELO.ORIGENVUELO, AEROPUERTO.NOMBREAEROPUERTO, AVION.IDAVION, AVION.TIPOAVION\n" +
-"FROM VUELO\n" +
-"INNER JOIN AEROPUERTO ON VUELO.IDAEROPUERTO = AEROPUERTO.IDAEROPUERTO\n" +
-"INNER JOIN AVION ON VUELO.IDAVION = AVION.IDAVION";
+                                "VUELO.ORIGENVUELO, AEROPUERTO.NOMBREAEROPUERTO, AVION.IDAVION, AVION.TIPOAVION\n" +
+                                "FROM [26.37.14.200].[agencia_vuelos].[dbo].VUELO\n" +
+                                "INNER JOIN AEROPUERTO ON VUELO.IDAEROPUERTO = AEROPUERTO.IDAEROPUERTO\n" +
+                                "INNER JOIN AVION ON VUELO.IDAVION = AVION.IDAVION";
             ResultSet resultado = sql.executeQuery(consulta);
     
             int columna=7;
