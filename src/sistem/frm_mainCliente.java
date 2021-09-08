@@ -1,5 +1,6 @@
 package sistem;
 
+import cliente.agregarVuelo;
 import cliente.CuentaBanco;
 import cliente.Vuelos;
 import cliente.datosGenerales;
@@ -40,9 +41,12 @@ public class frm_mainCliente extends javax.swing.JFrame {
         datosGenerales = new javax.swing.JMenu();
         cuentaBanco = new javax.swing.JMenu();
         vuelos = new javax.swing.JMenu();
+        comprar = new javax.swing.JMenu();
+        transferencias = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_id_sesion.setText("0");
         txt_id_sesion.addActionListener(new java.awt.event.ActionListener() {
@@ -60,14 +64,15 @@ public class frm_mainCliente extends javax.swing.JFrame {
         Contenedor.setLayout(ContenedorLayout);
         ContenedorLayout.setHorizontalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
-                .addContainerGap(509, Short.MAX_VALUE)
+            .addGroup(ContenedorLayout.createSequentialGroup()
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_test_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
-                        .addComponent(txt_id_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)))
-                .addGap(180, 180, 180))
+                    .addGroup(ContenedorLayout.createSequentialGroup()
+                        .addGap(470, 470, 470)
+                        .addComponent(txt_id_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ContenedorLayout.createSequentialGroup()
+                        .addGap(458, 458, 458)
+                        .addComponent(txt_test_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         ContenedorLayout.setVerticalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,8 +81,10 @@ public class frm_mainCliente extends javax.swing.JFrame {
                 .addComponent(txt_id_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(txt_test_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
+
+        getContentPane().add(Contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 480));
 
         jMenuBar2.setBorder(new javax.swing.border.MatteBorder(null));
         jMenuBar2.setMargin(new java.awt.Insets(5, 0, 5, 0));
@@ -116,6 +123,28 @@ public class frm_mainCliente extends javax.swing.JFrame {
         });
         jMenuBar2.add(vuelos);
 
+        comprar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        comprar.setText("Comprar");
+        comprar.setBorderPainted(true);
+        comprar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        comprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comprarMouseClicked(evt);
+            }
+        });
+        jMenuBar2.add(comprar);
+
+        transferencias.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        transferencias.setText("Transferencias");
+        transferencias.setBorderPainted(true);
+        transferencias.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        transferencias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transferenciasMouseClicked(evt);
+            }
+        });
+        jMenuBar2.add(transferencias);
+
         jMenu1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenu1.setText("Cerrar Sesion");
         jMenu1.setBorderPainted(true);
@@ -130,21 +159,6 @@ public class frm_mainCliente extends javax.swing.JFrame {
         jMenuBar2.add(jMenu1);
 
         setJMenuBar(jMenuBar2);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -191,6 +205,18 @@ public class frm_mainCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_id_sesionActionPerformed
 
+    private void comprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarMouseClicked
+        int id_user = this.capturaID();
+        System.out.println(""+id_user);
+        agregarVuelo av = new agregarVuelo(id_user);
+        Contenedor.add(av);
+        av.show();
+    }//GEN-LAST:event_comprarMouseClicked
+
+    private void transferenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferenciasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transferenciasMouseClicked
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -220,10 +246,12 @@ public class frm_mainCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Contenedor;
+    private javax.swing.JMenu comprar;
     private javax.swing.JMenu cuentaBanco;
     private javax.swing.JMenu datosGenerales;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu transferencias;
     public javax.swing.JTextField txt_id_sesion;
     public java.awt.TextField txt_test_id;
     private javax.swing.JMenu vuelos;

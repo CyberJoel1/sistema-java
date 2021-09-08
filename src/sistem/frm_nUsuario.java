@@ -35,6 +35,7 @@ public class frm_nUsuario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        txt_date = new com.toedter.calendar.JDateChooser();
         jp_online = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -95,6 +96,7 @@ public class frm_nUsuario extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("Ingrese Datos Personales");
         jp_personales.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 20, -1, -1));
+        jp_personales.add(txt_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 230, -1));
 
         jpContenedor.addTab("Datos Personales", jp_personales);
 
@@ -281,29 +283,29 @@ public class frm_nUsuario extends javax.swing.JFrame {
             try {
             Connection con = Conectar.getConexion();
             Statement sql = Conectar.getConexion().createStatement();
-            String consulta = "INSERT INTO dbo.USUARIOWEB(NOMBREUSER,PASSUSER,ESTADO)VALUES(?,?,?)";
+            String consulta = "INSERT INTO [26.37.14.200].[agencia_vuelos].[dbo].USUARIOWEB(NOMBREUSER,PASSUSER,ESTADO)VALUES(?,?,?)";
             PreparedStatement ps = con.prepareStatement(consulta); ps.setString(1, user); ps.setString(2, pass1); ps.setInt(3, 1);
             ps.executeUpdate();
             
-            String consulta_id_userWeb = "SELECT * FROM USUARIOWEB WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass1+"' AND ESTADO = 1";
+            String consulta_id_userWeb = "SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].USUARIOWEB WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass1+"' AND ESTADO = 1";
             ResultSet rs1 = sql.executeQuery(consulta_id_userWeb);
             int id_user_web=0;
             while(rs1.next()){ id_user_web=rs1.getInt(1);}
             
-            String consulta2 = "INSERT INTO [dbo].[CUENTA_BANCO] ([NUMEROCUENTA],[TITULAR])VALUES (?,?)";
+            String consulta2 = "INSERT INTO [26.37.14.200].[agencia_vuelos].[dbo].[CUENTA_BANCO] ([NUMEROCUENTA],[TITULAR])VALUES (?,?)";
             PreparedStatement ps2 = con.prepareStatement(consulta2); ps2.setString(1, numCuenta); ps2.setString(2, titular); 
             ps2.executeUpdate();
             
-            String consulta_id_cuenta = "SELECT * FROM dbo.CUENTA_BANCO WHERE NUMEROCUENTA='"+numCuenta+"' AND TITULAR ='"+titular+"';";
+            String consulta_id_cuenta = "SELECT * FROM [26.37.14.200].[agencia_vuelos].dbo.CUENTA_BANCO WHERE NUMEROCUENTA='"+numCuenta+"' AND TITULAR ='"+titular+"';";
             ResultSet rs2 = sql.executeQuery(consulta_id_cuenta);
             int id_cuenta=0;
             while(rs2.next()){ id_cuenta=rs2.getInt(1);}
             
-            String consulta3 = "INSERT INTO dbo.TARJETA(IDCUENTA,NUMEROTARJETA, CVVTARJETA)VALUES(?,?,?)";
+            String consulta3 = "INSERT INTO [26.37.14.200].[agencia_vuelos].[dbo].TARJETA(IDCUENTA,NUMEROTARJETA, CVVTARJETA)VALUES(?,?,?)";
             PreparedStatement ps3 = con.prepareStatement(consulta3); ps3.setInt(1, id_cuenta); ps3.setString(2, numTarjeta); ps3.setString(3, cvv);
             ps3.executeUpdate();
             
-            String consulta4 = "INSERT INTO dbo.CLIENTE(IDCUENTA,IDUSER,NOMBRE,APELLIDO,CEDULA,FECHANACIMIENTO,TELEFONO)\n" +
+            String consulta4 = "INSERT INTO [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE(IDCUENTA,IDUSER,NOMBRE,APELLIDO,CEDULA,FECHANACIMIENTO,TELEFONO)\n" +
                                                 "VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ps4 = con.prepareStatement(consulta4); 
             ps4.setInt(1, id_cuenta); 
@@ -413,6 +415,7 @@ public class frm_nUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_codigoCVV;
+    private com.toedter.calendar.JDateChooser txt_date;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_nombreTitular;
     private javax.swing.JTextField txt_numCuenta;

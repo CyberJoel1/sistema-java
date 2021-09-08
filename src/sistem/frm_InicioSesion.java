@@ -131,8 +131,6 @@ public class frm_InicioSesion extends javax.swing.JFrame {
                 this.setVisible(false);               
             }else{
                 frm_mainCliente fmc = new frm_mainCliente();
-                //CuentaBanco cb = new CuentaBanco();
-                //cb.txt_id_user.setText(""+this.id_sesion);
                 fmc.txt_id_sesion.setText(""+this.id_sesion);
                 fmc.txt_test_id.setText(""+this.id_sesion);
                 fmc.setVisible(true);
@@ -165,7 +163,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         frm_InicioSesion frm = new frm_InicioSesion();
         try{
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rs = sql.executeQuery("SELECT * FROM USUARIOWEB WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass+"' AND ESTADO = 1");
+            ResultSet rs = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].[USUARIOWEB] WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass+"' AND ESTADO = 1");
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Bienvenido");
                 resultado = 1;

@@ -28,8 +28,8 @@ public class TablaVistaAvion extends javax.swing.JFrame {
         try{
             Statement sql = Conectar.getConexion().createStatement();
             String consulta = "SELECT IDAVION \n" +
-", FABRICANTEAVION, TIPOAVION, CAPACIDADAVION, ESTADOAVION \n" +
-"FROM AVION";
+                                ", FABRICANTEAVION, TIPOAVION, CAPACIDADAVION, ESTADOAVION \n" +
+                                "FROM [26.37.14.200].[agencia_vuelos].[dbo].AVION";
             ResultSet resultado = sql.executeQuery(consulta);
     
             int columna=5;

@@ -5,6 +5,7 @@ import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import sistem.Conectar;
 
@@ -22,12 +23,12 @@ public class datosGenerales extends javax.swing.JInternalFrame {
         try{
             int id_cliente=0;
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rsCliente = sql.executeQuery("SELECT * FROM CLIENTE WHERE IDUSER="+id_user+"");
+            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
             if(rsCliente.next()){
                 id_cliente=rsCliente.getInt(1);
             }
             ResultSet rs = sql.executeQuery("SELECT us.NOMBREUSER,us.PASSUSER,c.NOMBRE,c.APELLIDO,c.CEDULA,c.FECHANACIMIENTO,c.TELEFONO \n" +
-                                            "  FROM dbo.USUARIOWEB us,dbo.CLIENTE c \n" +
+                                            "  FROM [26.37.14.200].[agencia_vuelos].[dbo].USUARIOWEB us,[26.37.14.200].[agencia_vuelos].[dbo].CLIENTE c \n" +
                                             "  WHERE us.IDUSER=c.IDUSER AND c.IDCLIENTE="+id_cliente+"");
             if(rs.next()){
                 String user = rs.getString(1);
@@ -50,8 +51,8 @@ public class datosGenerales extends javax.swing.JInternalFrame {
                 String txtcedula = cedula.replace(" ", "");
                 this.txt_cedula.setText(txtcedula);
                 
-                //java.sql.Date sqlfNacimiento = convert(rs.getDate(6));
-                this.txt_fecha.setText(rs.getString(6));
+                String fecha = rs.getString(6);
+                this.txt_fecha.setText(fecha.substring(0,10));
                 
                 String telefono = rs.getString(7);
                 String txttelefono = telefono.replace(" ", "");
