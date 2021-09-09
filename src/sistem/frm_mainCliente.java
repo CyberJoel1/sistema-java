@@ -2,6 +2,7 @@ package sistem;
 
 import cliente.agregarVuelo;
 import cliente.CuentaBanco;
+import cliente.Transferencias;
 import cliente.Vuelos;
 import cliente.datosGenerales;
 import java.sql.SQLException;
@@ -214,7 +215,11 @@ public class frm_mainCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_comprarMouseClicked
 
     private void transferenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferenciasMouseClicked
-        // TODO add your handling code here:
+       int id_user = this.capturaID();
+        System.out.println(""+id_user);
+        Transferencias t = new Transferencias(id_user);
+        Contenedor.add(t);
+        t.show();
     }//GEN-LAST:event_transferenciasMouseClicked
 
     public static void main(String args[]) {

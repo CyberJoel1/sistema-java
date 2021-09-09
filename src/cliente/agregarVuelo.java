@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import sistem.Conectar;
+import sistem.Conectar2;
 
 /**
  *

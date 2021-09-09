@@ -7,18 +7,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import sistem.Conectar;
+import sistem.Conectar2;
 
 
 public class Transferencias extends javax.swing.JInternalFrame {
 
     public Transferencias(int id) {
         initComponents();
+        cargarTransferencias(id);
     }
 
     public void cargarTransferencias(int id_user){
         try{
             int id_cliente=0;
-            Statement sql = Conectar.getConexion().createStatement();
+            Statement sql = Conectar2.getConexion().createStatement();
             ResultSet rsCliente = sql.executeQuery("SELECT * FROM [agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
             if(rsCliente.next()){
                 id_cliente=rsCliente.getInt(1);

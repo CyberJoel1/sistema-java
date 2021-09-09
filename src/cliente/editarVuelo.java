@@ -99,7 +99,7 @@ public class editarVuelo extends javax.swing.JInternalFrame {
             }
             resultado.close();
             sql.close();
-
+            
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
@@ -124,6 +124,7 @@ public class editarVuelo extends javax.swing.JInternalFrame {
                     + " WHERE [IDBOLETO]= " +boleto1 ;
             sql.executeUpdate(consulta);
             sql.close();
+            JOptionPane.showMessageDialog(null, "ACTUALIZADO");
         } catch (SQLException e) {
             System.out.println(e.toString());
         }

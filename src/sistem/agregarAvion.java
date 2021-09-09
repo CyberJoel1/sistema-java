@@ -71,6 +71,12 @@ public class agregarAvion extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Añadir Avion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gill Sans MT", 1, 14))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        fabricanteAviontxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fabricanteAviontxtActionPerformed(evt);
+            }
+        });
         jPanel1.add(fabricanteAviontxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 130, -1));
 
         tipoAviontxt.addActionListener(new java.awt.event.ActionListener() {
@@ -163,12 +169,17 @@ public class agregarAvion extends javax.swing.JInternalFrame {
         String estadoAvion= estadoAvionCbox.getSelectedItem().toString();
         int aerolinea=Integer.parseInt(id_aerolinea);
         int capacidad=Integer.parseInt(capacidadAvion);
+        String id_avion;
+        char[] letras={'A','B'};
+        byte[] numeros={1,2};
         try {
             Connection con = Conectar.getConexion();
+            
             String consulta = "INSERT INTO AVION (FABRICANTEAVION"
                     + ",IDAEROLINEA, TIPOAVION, CAPACIDADAVION, ESTADOAVION) "
                     + "VALUES (?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(consulta);
+           
             ps.setString(1, fabricanteAvion);
             ps.setInt(2, aerolinea);
             ps.setString(3, tipoAvion);
@@ -179,9 +190,38 @@ public class agregarAvion extends javax.swing.JInternalFrame {
                 ps.setBoolean(5, false);
             }
             ps.executeUpdate();
+            
+            String consulta4 = "SELECT IDAVION, TIPOAVION FROM AVION";
+            PreparedStatement statement = con.prepareStatement(consulta4);
 
+            ResultSet result = statement.executeQuery();
+            String id_avion_creado="";
+            while(result.next()) {
+                    id_avion_creado=result.getString(1);
+                   
+            }
+            System.out.print(Integer.parseInt(id_avion_creado));
+            
+             
+                 for(int i=0;i<letras.length;i++){
+                     for(int j=0;j<numeros.length;j++){
+                         System.out.print(letras[i]+numeros[j]+"  "+1);
+                         Statement sql = Conectar.getConexion().createStatement();
+                         String consultasql = "INSERT INTO [dbo].[ASIENTO]\n"
+                                 + "           ([IDAVION]\n"
+                                 + "           ,[LETRAASIENTO]\n"
+                                 + "           ,[FILAASIENTO])\n"
+                                 + "     VALUES\n"
+                                 + "           ("+Integer.parseInt(id_avion_creado)+",'"+letras[i]+"',"+numeros[j]+")";
+                         sql.executeUpdate(consultasql);
+                         sql.close();
+                         
+                     }
+                 }
+            
             con.close();
             ps.close();
+            JOptionPane.showMessageDialog(null, "Avion registrado");
 
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -209,6 +249,10 @@ public class agregarAvion extends javax.swing.JInternalFrame {
     private void añadirAvionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirAvionButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_añadirAvionButtonMouseClicked
+
+    private void fabricanteAviontxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fabricanteAviontxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fabricanteAviontxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

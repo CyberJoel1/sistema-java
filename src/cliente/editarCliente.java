@@ -192,6 +192,7 @@ if(!cedula.equalsIgnoreCase("")){
 " WHERE [CEDULA] = "+cedula;
             sql.executeUpdate(consulta);
             sql.close();
+            JOptionPane.showMessageDialog(null, "Cliente actualizado");
         } catch (SQLException e) {
             System.out.println(e.toString());
         }

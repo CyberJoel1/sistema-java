@@ -46,7 +46,7 @@ public class TablaVistaAvion extends javax.swing.JFrame {
                 }
                 
             }
-            Statement sql2 = Conectar.getConexion().createStatement();
+            Statement sql2 = Conectar2.getConexion().createStatement();
             String consulta2 = "SELECT IDAVION \n" +
 ", FABRICANTEAVION, TIPOAVION, CAPACIDADAVION, ESTADOAVION \n" +
 "FROM AVION";

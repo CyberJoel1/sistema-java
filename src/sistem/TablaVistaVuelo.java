@@ -38,7 +38,7 @@ public class TablaVistaVuelo extends javax.swing.JFrame {
                 
             }
             
-            Statement sql2 = Conectar.getConexion().createStatement();
+            Statement sql2 = Conectar2.getConexion().createStatement();
             String consulta2 = "SELECT VUELO.IDVUELO, VUELO.FECHAPARTIDAVUELO, VUELO.DESTINOVUELO, \n" +
 "VUELO.ORIGENVUELO, AEROPUERTO.NOMBREAEROPUERTO, AVION.IDAVION, AVION.TIPOAVION\n" +
 "FROM VUELO\n" +
@@ -110,7 +110,7 @@ public class TablaVistaVuelo extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check-form_116472.png"))); // NOI18N
-        jLabel1.setText("REGISTRO DE ESTUDIANTES");
+        jLabel1.setText("REGISTRO DE VUELOS");
 
         jButton1.setFont(new java.awt.Font("Gill Sans MT", 1, 14)); // NOI18N
         jButton1.setText("Cerrar");
@@ -125,7 +125,7 @@ public class TablaVistaVuelo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
+                .addContainerGap(382, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(317, 317, 317))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
