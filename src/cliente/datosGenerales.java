@@ -23,12 +23,12 @@ public class datosGenerales extends javax.swing.JInternalFrame {
         try{
             int id_cliente=0;
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
+            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
             if(rsCliente.next()){
                 id_cliente=rsCliente.getInt(1);
             }
             ResultSet rs = sql.executeQuery("SELECT us.NOMBREUSER,us.PASSUSER,c.NOMBRE,c.APELLIDO,c.CEDULA,c.FECHANACIMIENTO,c.TELEFONO \n" +
-                                            "  FROM [26.37.14.200].[agencia_vuelos].[dbo].USUARIOWEB us,[26.37.14.200].[agencia_vuelos].[dbo].CLIENTE c \n" +
+                                            "  FROM [agencia_vuelos].[dbo].USUARIOWEB us,[agencia_vuelos].[dbo].CLIENTE c \n" +
                                             "  WHERE us.IDUSER=c.IDUSER AND c.IDCLIENTE="+id_cliente+"");
             if(rs.next()){
                 String user = rs.getString(1);

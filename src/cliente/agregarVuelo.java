@@ -26,24 +26,29 @@ public class agregarVuelo extends javax.swing.JInternalFrame {
         cargarCheckBox();
         this.id_user=id;
     }
+        public agregarVuelo() {
+        initComponents();
+        cargarCheckBox();
+   
+    }
 
     public void cargarCheckBox(){
         try{
             Statement sql = Conectar.getConexion().createStatement();
-            String consulta = "SELECT IDAVION, TIPOAVION FROM [26.37.14.200].[agencia_vuelos].[dbo].AVION";
+            String consulta = "SELECT IDAVION, TIPOAVION FROM [agencia_vuelos].[dbo].AVION";
             ResultSet resultado = sql.executeQuery(consulta);   
             while(resultado.next()){
                 avionCbox.addItem(resultado.getString(1)+" - "+resultado.getString(2));
             }
 
-            consulta = "SELECT NOMBREAEROPUERTO FROM [26.37.14.200].[agencia_vuelos].[dbo].AEROPUERTO";
+            consulta = "SELECT NOMBREAEROPUERTO FROM [agencia_vuelos].[dbo].AEROPUERTO";
             resultado = sql.executeQuery(consulta);   
             while(resultado.next()){
                 AeropuertoCbox.addItem(resultado.getString(1));
             }
             
             cmb_pago.removeAllItems();
-            consulta = "SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].[TIPO_PAGO]";
+            consulta = "SELECT * FROM [agencia_vuelos].[dbo].[TIPO_PAGO]";
             resultado = sql.executeQuery(consulta);   
             while(resultado.next()){
                 cmb_pago.addItem(resultado.getString(2));
@@ -172,7 +177,7 @@ public class agregarVuelo extends javax.swing.JInternalFrame {
         String id_aeropuerto = "";
         try {
             Statement sql = Conectar.getConexion().createStatement();
-            String consulta = "SELECT TOP 1 IDAEROPUERTO FROM [26.37.14.200].[agencia_vuelos].[dbo].AEROPUERTO WHERE NOMBREAEROPUERTO = '"+name+"'";
+            String consulta = "SELECT TOP 1 IDAEROPUERTO FROM [agencia_vuelos].[dbo].AEROPUERTO WHERE NOMBREAEROPUERTO = '"+name+"'";
            // JOptionPane.showMessageDialog(null, consulta);
             ResultSet resultado = sql.executeQuery(consulta);
             while (resultado.next()) {
@@ -230,13 +235,13 @@ public class agregarVuelo extends javax.swing.JInternalFrame {
         try {
             int id_cliente=0,id_boleto=0,id_pago=0;
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
+            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
             if(rsCliente.next()){
                 id_cliente=rsCliente.getInt(1);
             }
                                 
             Connection con = Conectar.getConexion();
-            String sqlBoleto = "INSERT INTO [26.37.14.200].[agencia_vuelos].[dbo].[BOLETO]\n" +
+            String sqlBoleto = "INSERT INTO [agencia_vuelos].[dbo].[BOLETO]\n" +
                                 "([ORIGEN],[DESTINO],[CLASE])\n" +
                                 "VALUES	(?,?,?)";
             PreparedStatement ps1 = con.prepareStatement(sqlBoleto);
@@ -244,19 +249,19 @@ public class agregarVuelo extends javax.swing.JInternalFrame {
             ps1.setString(2,Destino);
             ps1.setString(3,clase);
             ps1.executeUpdate();
-            ResultSet rsBoleto = sql.executeQuery("SELECT TOP(1)* FROM  [26.37.14.200].[agencia_vuelos].[dbo].[BOLETO] ORDER BY IDBOLETO DESC");
+            ResultSet rsBoleto = sql.executeQuery("SELECT TOP(1)* FROM  [agencia_vuelos].[dbo].[BOLETO] ORDER BY IDBOLETO DESC");
             if(rsBoleto.next()){
                 id_boleto=rsBoleto.getInt(1);
             }
             
             ResultSet rsPago = sql.executeQuery("SELECT [IDTIPOPAGO]      \n" +
-                                                "  FROM [26.37.14.200].[agencia_vuelos].[dbo].[TIPO_PAGO]\n" +
+                                                "  FROM [agencia_vuelos].[dbo].[TIPO_PAGO]\n" +
                                                 "  WHERE DESCRIPCIONTIPO='"+tipo_pago+"'");
             if(rsPago.next()){
                 id_pago=rsPago.getInt(1);
             }
             
-            String sqlCompra = "INSERT INTO [26.37.14.200].[agencia_vuelos].[dbo].[COMPRA_RESERVA]\n" +
+            String sqlCompra = "INSERT INTO [agencia_vuelos].[dbo].[COMPRA_RESERVA]\n" +
                                 "([IDCLIENTE],[IDBOLETO],[IDPAGO],[FECHA],[TIPOCOMPRA],[VALIDEZ],[ABONO])\n" +
                                 "VALUES (?,?,?,?,?,?,?)";
             PreparedStatement psCompra = con.prepareStatement(sqlCompra);
@@ -269,7 +274,7 @@ public class agregarVuelo extends javax.swing.JInternalFrame {
             psCompra.setFloat(7,abono);
             psCompra.executeUpdate();
             
-            String consulta = "INSERT INTO [26.37.14.200].[agencia_vuelos].[dbo].VUELO (IDAEROPUERTO"
+            String consulta = "INSERT INTO [agencia_vuelos].[dbo].VUELO (IDAEROPUERTO"
                             + ",IDAVION, FECHAPARTIDAVUELO, DESTINOVUELO, ORIGENVUELO) "
                             + "VALUES (?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(consulta);

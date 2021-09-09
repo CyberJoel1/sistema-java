@@ -22,10 +22,10 @@ public class registrosClientes extends javax.swing.JInternalFrame {
             Statement sql = Conectar.getConexion().createStatement();
             
             ResultSet resultado = sql.executeQuery("SELECT [NOMBRE],[APELLIDO],[CEDULA],[FECHANACIMIENTO],[TELEFONO]\n" +
-                                                    "  FROM [26.37.14.200].[agencia_vuelos].[dbo].[CLIENTE]\n" +
+                                                    "  FROM [agencia_vuelos].[dbo].[CLIENTE]\n" +
                                                     "  UNION \n" +
                                                     "SELECT [NOMBRE],[APELLIDO],[CEDULA],[FECHANACIMIENTO],[TELEFONO]\n" +
-                                                    "  FROM [26.60.5.36].[agencia_vuelos].[dbo].[CLIENTE]");
+                                                    "  FROM [agencia_vuelos].[dbo].[CLIENTE]");
             int columna=5;
             List<String> nom= new ArrayList<>();
             while(resultado.next()){

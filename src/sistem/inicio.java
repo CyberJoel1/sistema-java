@@ -28,6 +28,7 @@ public class inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        button_principal = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -37,6 +38,15 @@ public class inicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(630, 420));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        button_principal.setFont(new java.awt.Font("Gill Sans MT", 1, 14)); // NOI18N
+        button_principal.setText("ADMIN");
+        button_principal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_principalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 106, -1));
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 1, 24)); // NOI18N
         jLabel1.setText("SISTEMA DE VUELOS");
@@ -49,7 +59,7 @@ public class inicio extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 106, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 106, -1));
 
         jButton2.setFont(new java.awt.Font("Gill Sans MT", 1, 14)); // NOI18N
         jButton2.setText("SALIR");
@@ -78,6 +88,12 @@ public class inicio extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void button_principalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_principalActionPerformed
+        Principal f = new Principal();
+        f.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_button_principalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,6 +132,7 @@ public class inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_principal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

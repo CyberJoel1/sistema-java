@@ -19,12 +19,12 @@ public class Transferencias extends javax.swing.JInternalFrame {
         try{
             int id_cliente=0;
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
+            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
             if(rsCliente.next()){
                 id_cliente=rsCliente.getInt(1);
             }
             ResultSet resultado = sql.executeQuery("SELECT cr.FECHA,tp.DESCRIPCIONTIPO,cr.TIPOCOMPRA,cr.VALIDEZ,cr.ABONO \n" +
-                                                    "FROM [26.37.14.200].[agencia_vuelos].[dbo].COMPRA_RESERVA cr,[26.37.14.200].[agencia_vuelos].[dbo].TIPO_PAGO tp, [26.37.14.200].[agencia_vuelos].[dbo].BOLETO b\n" +
+                                                    "FROM [agencia_vuelos].[dbo].COMPRA_RESERVA cr,[agencia_vuelos].[dbo].TIPO_PAGO tp, [agencia_vuelos].[dbo].BOLETO b\n" +
                                                     "WHERE IDCLIENTE="+id_cliente+" AND cr.IDBOLETO=b.IDBOLETO AND cr.IDPAGO=tp.IDTIPOPAGO ");
             int columna=5;
             List<String> nom= new ArrayList<>();

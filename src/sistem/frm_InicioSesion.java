@@ -163,7 +163,7 @@ public class frm_InicioSesion extends javax.swing.JFrame {
         frm_InicioSesion frm = new frm_InicioSesion();
         try{
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rs = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].[USUARIOWEB] WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass+"' AND ESTADO = 1");
+            ResultSet rs = sql.executeQuery("SELECT * FROM [agencia_vuelos].[dbo].[USUARIOWEB] WHERE NOMBREUSER='"+user+"' AND PASSUSER='"+pass+"' AND ESTADO = 1");
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Bienvenido");
                 resultado = 1;

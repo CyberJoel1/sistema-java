@@ -26,10 +26,11 @@ public class TablaVistaAvion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
                         String bases = "";
         try{
+            
             Statement sql = Conectar.getConexion().createStatement();
             String consulta = "SELECT IDAVION \n" +
-                                ", FABRICANTEAVION, TIPOAVION, CAPACIDADAVION, ESTADOAVION \n" +
-                                "FROM [26.37.14.200].[agencia_vuelos].[dbo].AVION";
+", FABRICANTEAVION, TIPOAVION, CAPACIDADAVION, ESTADOAVION \n" +
+"FROM AVION";
             ResultSet resultado = sql.executeQuery(consulta);
     
             int columna=5;
@@ -42,6 +43,23 @@ public class TablaVistaAvion extends javax.swing.JFrame {
                  nom.add(resultado.getString(i+1));
                 //nombre_array[contador][i] = resultado.getString(i+1);
                 System.out.println(resultado.getString(i+1));
+                }
+                
+            }
+            Statement sql2 = Conectar.getConexion().createStatement();
+            String consulta2 = "SELECT IDAVION \n" +
+", FABRICANTEAVION, TIPOAVION, CAPACIDADAVION, ESTADOAVION \n" +
+"FROM AVION";
+            ResultSet resultado2 = sql2.executeQuery(consulta2);
+    
+            
+            
+            while(resultado2.next()){
+                
+                for(int i=0;i<columna;i++){
+                 nom.add(resultado2.getString(i+1));
+                //nombre_array[contador][i] = resultado.getString(i+1);
+                System.out.println(resultado2.getString(i+1));
                 }
                 
             }

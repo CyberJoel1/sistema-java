@@ -18,10 +18,10 @@ public class TablaVistaVuelo extends javax.swing.JFrame {
                 try{
             Statement sql = Conectar.getConexion().createStatement();
             String consulta = "SELECT VUELO.IDVUELO, VUELO.FECHAPARTIDAVUELO, VUELO.DESTINOVUELO, \n" +
-                                "VUELO.ORIGENVUELO, AEROPUERTO.NOMBREAEROPUERTO, AVION.IDAVION, AVION.TIPOAVION\n" +
-                                "FROM [26.37.14.200].[agencia_vuelos].[dbo].VUELO\n" +
-                                "INNER JOIN AEROPUERTO ON VUELO.IDAEROPUERTO = AEROPUERTO.IDAEROPUERTO\n" +
-                                "INNER JOIN AVION ON VUELO.IDAVION = AVION.IDAVION";
+"VUELO.ORIGENVUELO, AEROPUERTO.NOMBREAEROPUERTO, AVION.IDAVION, AVION.TIPOAVION\n" +
+"FROM VUELO\n" +
+"INNER JOIN AEROPUERTO ON VUELO.IDAEROPUERTO = AEROPUERTO.IDAEROPUERTO\n" +
+"INNER JOIN AVION ON VUELO.IDAVION = AVION.IDAVION";
             ResultSet resultado = sql.executeQuery(consulta);
     
             int columna=7;
@@ -37,6 +37,26 @@ public class TablaVistaVuelo extends javax.swing.JFrame {
                 }
                 
             }
+            
+            Statement sql2 = Conectar.getConexion().createStatement();
+            String consulta2 = "SELECT VUELO.IDVUELO, VUELO.FECHAPARTIDAVUELO, VUELO.DESTINOVUELO, \n" +
+"VUELO.ORIGENVUELO, AEROPUERTO.NOMBREAEROPUERTO, AVION.IDAVION, AVION.TIPOAVION\n" +
+"FROM VUELO\n" +
+"INNER JOIN AEROPUERTO ON VUELO.IDAEROPUERTO = AEROPUERTO.IDAEROPUERTO\n" +
+"INNER JOIN AVION ON VUELO.IDAVION = AVION.IDAVION";
+            ResultSet resultado2 = sql.executeQuery(consulta);
+            
+            while(resultado2.next()){
+                
+                for(int i=0;i<columna;i++){
+                 nom.add(resultado2.getString(i+1));
+                //nombre_array[contador][i] = resultado.getString(i+1);
+                System.out.println(resultado2.getString(i+1));
+                }
+                
+            }
+            
+            
             int contador=0;
             String nombre_array[][] = new String[nom.size()/columna][columna];
             for(int j=0;j<(nom.size()/columna);j++){

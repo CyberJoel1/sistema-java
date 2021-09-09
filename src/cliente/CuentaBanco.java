@@ -27,12 +27,12 @@ public final class CuentaBanco extends javax.swing.JInternalFrame {
         try{
             int id_cliente=0;
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
+            ResultSet rsCliente = sql.executeQuery("SELECT * FROM [agencia_vuelos].[dbo].CLIENTE WHERE IDUSER="+id_user+"");
             if(rsCliente.next()){
                 id_cliente=rsCliente.getInt(1);
             }
             
-            ResultSet rs = sql.executeQuery("SELECT cb.IDCUENTA,cb.NUMEROCUENTA,cb.TITULAR FROM [26.37.14.200].[agencia_vuelos].[dbo].CLIENTE c, [26.37.14.200].[agencia_vuelos].[dbo].CUENTA_BANCO cb WHERE c.IDCLIENTE="+id_cliente+" AND c.IDCUENTA=cb.IDCUENTA");
+            ResultSet rs = sql.executeQuery("SELECT cb.IDCUENTA,cb.NUMEROCUENTA,cb.TITULAR FROM [agencia_vuelos].[dbo].CLIENTE c, [agencia_vuelos].[dbo].CUENTA_BANCO cb WHERE c.IDCLIENTE="+id_cliente+" AND c.IDCUENTA=cb.IDCUENTA");
             if(rs.next()){
                 this.id_cuenta = rs.getInt(1);
                 String numCuenta = rs.getString(2);
@@ -51,7 +51,7 @@ public final class CuentaBanco extends javax.swing.JInternalFrame {
     public void cargarTarjetas(int id_cuenta){
         try{
             Statement sql = Conectar.getConexion().createStatement();
-            ResultSet resultado = sql.executeQuery("SELECT * FROM [26.37.14.200].[agencia_vuelos].[dbo].TARJETA WHERE IDCUENTA="+id_cuenta+"");
+            ResultSet resultado = sql.executeQuery("SELECT * FROM [agencia_vuelos].[dbo].TARJETA WHERE IDCUENTA="+id_cuenta+"");
             int columna=4;
             List<String> nom= new ArrayList<>();
             while(resultado.next()){
